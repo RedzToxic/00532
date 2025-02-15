@@ -5,6 +5,12 @@
 # Get input and convert to correct data type for testScore and classRank
 
 # Test using admission requirements and print Accept or Reject
+testScoreString = input()
+classRankString = input()
+
+testScore = int(testScoreString)
+classRank = int(classRankString)
+
 if testScore >= 90:
   if classRank >= 25:
     print("Accept")
