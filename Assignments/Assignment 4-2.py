@@ -15,7 +15,7 @@ numShifts = int(input("Please enter the amount of shifts done: "))
 # Calculates productiviy score
 productivity_Score = (trans_dollar_val/ numTransactions) / numShifts
 
-# Checks productivity score
+# Checks productivity score and spits out their bonus
 if (productivity_Score <= 30):
     print(employee_name)
     print("Employee Bonus: $50.00")
