@@ -62,9 +62,28 @@ while True:
 
         # The program confirms to the user, after it has appended the new car to the list 
         print(f'You have added {add_vehicle} as an authorized vehicle')
-        
 
-    # If last one than it closes
+    # If chosen 4, it will respond by asking which car user wants to remove and if they're sure
+    elif user_input == 4:
+        print("Please Enter the full Vehicle name you would like to REMOVE: ")
+
+        # gets the user response for which car
+        remove_vehicle = input()
+
+        # double checks with the user if they want to do this change
+        print(f'Are you sure you want to remove {remove_vehicle} from the Authorized Vehicles List?')
+
+        # takes in the final input
+        final_input = input()
+
+        # checks if the final input is yes, then it will remove the desired car
+        if final_input == "yes":
+
+            # the program removes the car and reminds the user of what action they've just done and what car they removed
+            AllowedVehiclesList.remove(remove_vehicle)
+            print(f'You have REMOVED {remove_vehicle} as an authorized vehicle')
+
+    # If last one is chosen than it closes
     else:
         print("Thank you for using the AutoCountry Vehicle Finder, good-bye!")
         break
