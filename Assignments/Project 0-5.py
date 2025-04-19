@@ -1,7 +1,7 @@
 # Continue making the CarFinder
 
  # The list that was provided (moved list outside loop since it only needs to be delared once) 
-AllowedVehiclesList = ["Ford F-150", "Chevrolet Silverado", "Tesla Cybertruck", "Toyota Tundra", "Nissan Titan", "Rivian RT1", "Ram 1500"]
+#AllowedVehiclesList = Allowed_Vechicles_List.txt
 
 # Finally added a loop, since the user might be doing mutiple actions in one sitting, like adding new vehicles
 
@@ -32,8 +32,10 @@ while True:
 
     # If chosen 1, it prints list
     if user_input == 1:
-        for car in (AllowedVehiclesList):
-            print(car)
+        with open("Assignments/Allowed_Vechicles_List.txt", "r") as AllowedVehiclesList:
+            response = AllowedVehiclesList.read()
+            print(response)
+        #AllowedVehiclesList = open("data/Allowed_Vechiles_list.txt", "r")
             
 
     # If chosen 2, it will respond if it's apart or not of list
