@@ -18,6 +18,7 @@ while True:
         print("3. ADD Authorized Vehicle")
         print("4. DELETE Authorized Vehicle")
         print("5. Exit")
+        print("********************************")
 
 
     # Calls function
@@ -32,6 +33,8 @@ while True:
 
     # If chosen 1, it prints list
     if user_input == 1:
+        print("The AutoCountry sales manager has authorized the purchase and selling of the following vehicles: ")
+
         # Using the file i/o to open and print out the text file
         with open("/Users/daniil/Desktop/COP1000/00532/Assignments/Allowed_Vehicles_List.txt", "r") as db:
             response = db.read()
