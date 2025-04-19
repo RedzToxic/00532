@@ -24,28 +24,17 @@ while True:
     # Calls function
     houseKeeping();
 
-    
-        
-
-
-    # Defines what user input is and how gets it
-    user_input = int(input())
-
-
-    # Checks the user input and does actions based on it
-
-    # If chosen 1, it prints list
-    if user_input == 1:
+    # This is the print fucntion, if user inputs 1, the function is called and prints list of cars
+    def PRINT_vehicle():
         print("The AutoCountry sales manager has authorized the purchase and selling of the following vehicles: ")
 
         # Using the file i/o to open and print out the text file
         with open("/Users/daniil/Desktop/COP1000/00532/Assignments/Allowed_Vehicles_List.txt", "r") as db:
             response = db.read()
             print(response)
-            
 
-    # If chosen 2, it will respond if it's apart or not of list
-    elif user_input == 2:
+    # This is the search function, if user inputs 2, the function is called and searches if user's input is an authorized car
+    def SEARCH_vehicle():
         print("Please Enter the full Vechicle name: ")
         # Gets the user input for which car they want
         car_input = input()
@@ -57,9 +46,8 @@ while True:
         if car_input == "Tesla":
             print("Tesla is not an authorized vehicle, if you received this in error please check the spelling and try again.")
 
-
-    # If chosen 3, it will respond by asking which vehicle the user wants to add
-    elif user_input == 3:
+    # This is the add function, if user inputs 3, the function is called and adds the car that the user wants
+    def ADD_vehicle():
         print("Please Enter the full Vehicle name you would like to add: ")
         
          # Takes in the response from the user and then is used for append value in append function
@@ -72,8 +60,8 @@ while True:
         # The program confirms to the user, after it has appended the new car to the list 
         print(f'You have added {add_vehicle} as an authorized vehicle')
 
-    # If chosen 4, it will respond by asking which car user wants to remove and if they're sure
-    elif user_input == 4:
+    # This is the delete function, if user inputs 4, the funtion is called and deletes whichever car the user wants removed 
+    def DELETE_vehicle():
         print("Please Enter the full Vehicle name you would like to REMOVE: ")
 
         # gets the user response for which car
@@ -100,6 +88,27 @@ while True:
                     db.writelines(cars)
 
             print(f'You have REMOVED {remove_vehicle} as an authorized vehicle')
+
+    # Defines what user input is and how gets it
+    user_input = int(input())
+
+    # Checks the user input and does actions based on it
+
+    # If chosen 1, it prints list
+    if user_input == 1:
+        PRINT_vehicle();
+            
+    # If chosen 2, it will respond if it's apart or not of list
+    elif user_input == 2:
+       SEARCH_vehicle();
+
+    # If chosen 3, it will respond by asking which vehicle the user wants to add
+    elif user_input == 3:
+        ADD_vehicle();
+
+    # If chosen 4, it will respond by asking which car user wants to remove and if they're sure
+    elif user_input == 4:
+        DELETE_vehicle();
 
     # If last one is chosen than it closes
     else:
