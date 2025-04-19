@@ -1,7 +1,7 @@
 # Continue making the CarFinder
 
- # The list that was provided (moved list outside loop since it only needs to be delared once) 
-#AllowedVehiclesList = Allowed_Vechicles_List.txt
+# Incorporating the text file into this program
+import os
 
 # Finally added a loop, since the user might be doing mutiple actions in one sitting, like adding new vehicles
 
@@ -32,10 +32,10 @@ while True:
 
     # If chosen 1, it prints list
     if user_input == 1:
-        with open("Assignments/Allowed_Vechicles_List.txt", "r") as AllowedVehiclesList:
-            response = AllowedVehiclesList.read()
+        # Using the file i/o to open and print out the text file
+        with open("/Users/daniil/Desktop/COP1000/00532/Assignments/Allowed_Vehicles_List.txt", "r") as db:
+            response = db.read()
             print(response)
-        #AllowedVehiclesList = open("data/Allowed_Vechiles_list.txt", "r")
             
 
     # If chosen 2, it will respond if it's apart or not of list
@@ -55,12 +55,13 @@ while True:
     # If chosen 3, it will respond by asking which vehicle the user wants to add
     elif user_input == 3:
         print("Please Enter the full Vehicle name you would like to add: ")
-
-        # Takes in the response from the user and then is used for append value in append function
+        
+         # Takes in the response from the user and then is used for append value in append function
         add_vehicle = input()
 
-        # This is where the appending happens, the append function is being fed the user input
-        AllowedVehiclesList.append(add_vehicle)
+         #The new updated code that works with the i/o and allows user to add another car with given input
+        with open("/Users/daniil/Desktop/COP1000/00532/Assignments/Allowed_Vehicles_List.txt", "a") as db:
+            db.write("\n" + add_vehicle)
 
         # The program confirms to the user, after it has appended the new car to the list 
         print(f'You have added {add_vehicle} as an authorized vehicle')
@@ -81,8 +82,17 @@ while True:
         # checks if the final input is yes, then it will remove the desired car
         if final_input == "yes":
 
-            # the program removes the car and reminds the user of what action they've just done and what car they removed
-            AllowedVehiclesList.remove(remove_vehicle)
+            # Also an updated version of deleting, this one saves as db than saves the db.readlines as a varaible
+            with open("/Users/daniil/Desktop/COP1000/00532/Assignments/Allowed_Vehicles_List.txt", "r") as db:
+                cars = db.readlines()
+
+                # Defines what cars is, which a for loop that checks for the remove_vehicle
+                cars = [car for car in cars if car != remove_vehicle]
+
+                # Finally writes over it or in other words deletes it within the actual db saved name
+                with open("/Users/daniil/Desktop/COP1000/00532/Assignments/Allowed_Vehicles_List.txt", "w") as db:
+                    db.writelines(cars)
+
             print(f'You have REMOVED {remove_vehicle} as an authorized vehicle')
 
     # If last one is chosen than it closes
